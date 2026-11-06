@@ -16,9 +16,7 @@ The **Drug Repurposing-Oriented Alzheimer’s Disease Ontology (DROADO)** is a f
   - [Core Concept Types](#core-concept-types)
   - [Object Properties & n-ary Relations](#object-properties--n-ary-relations)
 - [Knowledge Reasoning & Inference Rules](#knowledge-reasoning--inference-rules)
-  - [Example Candidate Inference](#example-candidate-inference)
 - [Evaluation](#evaluation)
-- [File Structure](#file-structure)
 - [Usage](#usage)
 - [Citation](#citation)
 - [Funding & Acknowledgments](#funding--acknowledgments)
@@ -89,14 +87,6 @@ DROADO provides multi-node semantic inference paths (spanning 3 to 5 nodes) to d
 * **Rule 3 (5 nodes: `Drug -> Protein1 -> Pathway -> Protein2 -> Disease`):**
   $$\big(\text{binds}(dr, pr_1) \lor \dots\big) \land \text{involvedIn}(pr_1, pa) \land \text{involves}(pa, pr_2) \land \big(\text{associatedWith}(pr_2, di) \lor \dots\big) \implies \text{mayTreat}(dr, di)$$
 
-### Example Candidate Inference
-Applying **Rule 2**:
-1. `Lonafarnib` *(Drug)* $\xrightarrow{\text{downregulates}}$ `Rhes` *(Protein)*
-2. `Rhes` *(Protein)* $\xrightarrow{\text{involvedIn}}$ `tau degradation` *(Pathway)*
-3. `tau degradation` *(Pathway)* $\xrightarrow{\text{associatedWith}}$ `Alzheimer's Disease` *(Disease)*
-4. **Inferred Result:** `Lonafarnib` $\xrightarrow{\textbf{mayTreat}}$ `Alzheimer's Disease`
-
-
 ---
 
 ## Evaluation
@@ -109,23 +99,6 @@ DROADO was benchmarked using the semiotic ontology evaluation framework **OntoKe
 | **Semantic Quality** *(Clarity, Consistency, Interpretability)* | **0.95** | 0.94 | **0.95** | 0.82 |
 | **Pragmatic Quality** *(Comprehensiveness)* | **0.75** | 0.11 | 0.25 | 0.62 |
 | **Overall Score** | **0.77** | 0.56 | 0.61 | 0.67 |
-
----
-
-## File Structure
-
-```text
-.
-├── LICENSE                  # Creative Commons Attribution 4.0 International (CC BY 4.0)
-├── README.md                # Project documentation and summary
-├── ontology/
-│   ├── droado.owl           # Main ontology in OWL/XML format
-│   └── droado.ttl           # Ontology serialized in Turtle format (optional)
-├── queries/
-│   └── inference_rules.sparql # SPARQL implementations of Rule 1, 2, and 3
-└── docs/
-    └── ontology_schema.png  # Diagram illustrating core schema and relation paths
-```
 
 ---
 
