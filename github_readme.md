@@ -17,7 +17,6 @@ The **Drug Repurposing-Oriented Alzheimer’s Disease Ontology (DROADO)** is a f
   - [Object Properties & n-ary Relations](#object-properties--n-ary-relations)
 - [Knowledge Reasoning & Inference Rules](#knowledge-reasoning--inference-rules)
   - [Example Candidate Inference](#example-candidate-inference)
-- [Enrichment & Interoperability](#enrichment--interoperability)
 - [Evaluation](#evaluation)
 - [File Structure](#file-structure)
 - [Usage](#usage)
@@ -53,19 +52,9 @@ However, computational repurposing requires harmonizing and reasoning over fragm
 
 DROADO is centered on five fundamental biomedical pillars: **Disease**, **Drug**, **Gene**, **Protein**, and **Pathway**.
 
-```
-              [ Pathway ]
-              ^    ^    ^
-   involvedIn |    |    | involves
-              |    |    +----------------+
-              |    |                     |
-     [ Gene ]-+    +-----[ Protein ]<----+
-        |   \             ^   |
-encodes |    \ interacts /    | binds / regulates
-        v     v         /     v
-     [ Disease ] <-------- [ Drug / Chemical ]
-               treats / mayTreat
-```
+<img width="320" height="274" alt="image" src="https://github.com/user-attachments/assets/43942599-69e5-4ac3-ad30-325d02a9a2e8" />
+
+Figure 1. Knowledge model for AD drug repurposing 
 
 ### Core Concept Types
 
@@ -107,15 +96,6 @@ Applying **Rule 2**:
 3. `tau degradation` *(Pathway)* $\xrightarrow{\text{associatedWith}}$ `Alzheimer's Disease` *(Disease)*
 4. **Inferred Result:** `Lonafarnib` $\xrightarrow{\textbf{mayTreat}}$ `Alzheimer's Disease`
 
----
-
-## Enrichment & Interoperability
-
-DROADO was constructed through a hybrid curation strategy:
-* **Curated Literature:** In-depth manual extraction from peer-reviewed systematic reviews, meta-analyses, and high-impact AD literature (2015–2019).
-* **Ontology Reuse:** Cross-mapped to Disease Ontology (DO), Medical Subject Headings (MeSH), Gene Ontology (GO), and Alzheimer's Disease Map Ontology (ADMO).
-* **Identifier Cross-References:** Standardized using UMLS CUIs, HGNC IDs, Entrez Gene IDs, CAS Registry Numbers, and FDA UNII codes.
-* **Structured Databases:** Ingested mappings from DrugBank, DrugCentral, GenBank, OMIM, and the NHGRI-EBI GWAS Catalog.
 
 ---
 
@@ -155,13 +135,10 @@ DROADO was benchmarked using the semiotic ontology evaluation framework **OntoKe
 1. Download and install [Protégé](https://protege.stanford.edu/) (version 5.5.0 or later recommended).
 2. Clone this repository:
    ```bash
-   git clone https://github.com/<your-username>/DROADO.git
+   git clone https://github.com/Tao-AI-group/DROADO.git
    ```
 3. Open Protégé, select **File > Open**, and select `ontology/droado.owl`.
 4. Run standard reasoners (e.g., HermiT or Pellet) to inspect class hierarchies and inferred object properties.
-
-### Running SPARQL Queries
-DROADO can be hosted in any RDF triplestore (e.g., Apache Jena Fuseki, GraphDB, or Virtuoso) to query candidate inference chains using SPARQL.
 
 ---
 
@@ -188,12 +165,9 @@ If you use DROADO in your research, please cite our IEEE ICHI publication:
 ---
 
 ## Funding & Acknowledgments
-
 This research was supported in part by:
 * The **National Institutes of Health (NIH)** under Award Number **R01 LM011829**.
 * The **Cancer Prevention and Research Institute of Texas (CPRIT)** Training Grant **#RP160015**.
-
-We also gratefully acknowledge the intellectual and curation contributions from researchers at the School of Biomedical Informatics (UTHealth Houston), UT Austin, and Tianjin University.
 
 ---
 
